@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nautible-app-customer
+  namespace: nautible-app
+  labels:
+    app.kubernetes.io/name: nautible-app-customer
+    app.kubernetes.io/instance: nautible-app-customer
+    app.kubernetes.io/version: 1.0.0
+    app.kubernetes.io/component: app
+    app.kubernetes.io/part-of: nautible
+    app.kubernetes.io/managed-by: manual
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: nautible-app-customer
+      app.kubernetes.io/component: app
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: nautible-app-customer
+        app.kubernetes.io/instance: nautible-app-customer
+        app.kubernetes.io/version: 1.0.0
+        app.kubernetes.io/component: app
+        app.kubernetes.io/part-of: nautible
+        app.kubernetes.io/managed-by: manual
+    spec:
+      containers:
+      - name: nautible-app-customer
+        image: public.ecr.aws/nautible/nautible-app-customer:dummy
+        ports:
+          - containerPort: 8080
+          - containerPort: 9000
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /health/live
+          failureThreshold: 10
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /health/ready
+          failureThreshold: 10
+          periodSeconds: 30
+

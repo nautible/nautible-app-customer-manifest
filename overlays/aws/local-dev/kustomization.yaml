@@ -1,0 +1,6 @@
+bases:
+  - ../../../base
+patchesStrategicMerge:
+  - customer-deploy.yaml
+resources:
+  - customer-localstack.yaml

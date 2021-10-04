@@ -1,0 +1,17 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nautible-app-customer
+  namespace: nautible-app
+spec:
+  template:
+    spec:
+      containers:
+      - name: nautible-app-customer
+        image: public.ecr.aws/nautible/nautible-app-customer:311645b3857f379ec6d9e8e18ea439b2a9298697
+        env:
+        - name: QUARKUS_PROFILE
+          value: aws-dev
+        - name: QUARKUS_DYNAMODB_AWS_REGION
+          value: ap-northeast-1
