@@ -2,14 +2,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nautible-app-customer
-  namespace: nautible-app
+  name: nautible-app-ms-customer
+  namespace: nautible-app-ms
 spec:
   replicas: 1
   template:
     spec:
       containers:
-      - name: nautible-app-customer
+      - name: nautible-app-ms-customer
         env:
         - name: QUARKUS_PROFILE
           value: aws-local-dev

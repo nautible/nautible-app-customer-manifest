@@ -2,24 +2,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nautible-app-customer
-  namespace: nautible-app
+  name: nautible-app-ms-customer
+  namespace: nautible-app-ms
 spec:
   template:
     spec:
       containers:
-      - name: nautible-app-customer
-        image: nautibledevacr.azurecr.io/nautible-app-customer:bdb22dedd38b1a357bf7fe74d373c614775aa92f
+      - name: nautible-app-ms-customer
+        image: nautibledevacr.azurecr.io/nautible-app-ms-customer:bdb22dedd38b1a357bf7fe74d373c614775aa92f
         env:
         - name: QUARKUS_PROFILE
           value: azure-dev
         - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: secret-nautible-app-cosmosdb
+              name: secret-nautible-app-ms-cosmosdb
               key: DATABASE_USER
         - name: DB_PW
           valueFrom:
             secretKeyRef:
-              name: secret-nautible-app-cosmosdb
+              name: secret-nautible-app-ms-cosmosdb
               key: DATABASE_PW
