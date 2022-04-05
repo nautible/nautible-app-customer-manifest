@@ -2,11 +2,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nautible-app-customer
-  namespace: nautible-app
+  name: nautible-app-ms-customer
+  namespace: nautible-app-ms
   labels:
-    app.kubernetes.io/name: nautible-app-customer
-    app.kubernetes.io/instance: nautible-app-customer
+    app.kubernetes.io/name: nautible-app-ms-customer
+    app.kubernetes.io/instance: nautible-app-ms-customer
     app.kubernetes.io/version: 1.0.0
     app.kubernetes.io/component: app
     app.kubernetes.io/part-of: nautible
@@ -15,21 +15,21 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app.kubernetes.io/instance: nautible-app-customer
+      app.kubernetes.io/instance: nautible-app-ms-customer
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: nautible-app-customer
-        app.kubernetes.io/instance: nautible-app-customer
+        app.kubernetes.io/name: nautible-app-ms-customer
+        app.kubernetes.io/instance: nautible-app-ms-customer
         app.kubernetes.io/version: 1.0.0
         app.kubernetes.io/component: app
         app.kubernetes.io/part-of: nautible
         app.kubernetes.io/managed-by: manual
     spec:
       containers:
-      - name: nautible-app-customer
-        image: public.ecr.aws/nautible/nautible-app-customer:dummy
+      - name: nautible-app-ms-customer
+        image: public.ecr.aws/nautible/nautible-app-ms-customer:dummy
         ports:
           - containerPort: 8080
           - containerPort: 9000
