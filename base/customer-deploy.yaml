@@ -36,13 +36,13 @@ spec:
         livenessProbe:
           httpGet:
             port: 8080
-            path: /q/health/live
+            path: /health/live
           failureThreshold: 10
           periodSeconds: 30
         readinessProbe:
           httpGet:
             port: 8080
-            path: /q/health/ready
+            path: /health/ready
           failureThreshold: 10
           periodSeconds: 30
 
